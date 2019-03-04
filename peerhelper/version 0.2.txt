@@ -1,2 +1,6 @@
 version: 0.2
-	- complete make over;
+	- complete make over
+	- Added Slide Show
+
+version 0.3
+	-added signup page div
