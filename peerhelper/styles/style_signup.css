@@ -1,0 +1,124 @@
+@font-face {
+  font-family: 'myfontRegular';
+  src: url('fonts/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'myfontBold';
+  src: url('fonts/Gilroy-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'myfontExtraBold';
+  src: url('fonts/Gilroy-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'myfontHeavy';
+  src: url('fonts/Gilroy-Heavy.ttf');
+}
+
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	font-family: myfontRegular;
+	background-color: #f3f3f3;
+	
+}
+
+
+
+/* Signup Page*/
+
+.signup_container{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+
+  padding-top: 130px;
+}
+
+.form_container{
+  width: 40%;
+  height: 380px;
+  background-color: #fff;
+  color: #000;
+  padding: 40px 40px 0px 40px;
+  margin-top:20px;
+  margin-right: 100px;
+  border-radius: 5px;
+  box-shadow:0px 0px 20px #b3b3b3;
+}
+
+
+.form_style{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input_container{
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+
+.input_label{
+  color: #818181;
+  font-family: myfontBold; 
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.form_input{
+  width: 95%;
+  height: 30px;
+  display: block;
+  border: 0px;
+  border-radius: 1px;
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+ 
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  font-size: 15px;
+  
+  background-color: #dfd3ff;
+}
+
+
+.signup_graphic{
+  height: 450px;
+  width: auto;
+}
+
+
+.submit_button{
+  background-color: #00187a;
+  text-align: center;
+  color: #fff;
+  font-size: 18px ;
+  font-family: myfontExtraBold;
+  letter-spacing: 4px;  
+  width: 100%;
+  margin-top: 10px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 2px 2px 0px 0px;
+  border: 0px;
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
+}
+
+/*input.submit_button:hover { 
+  padding: 20px 20px 20px 20px;
+  border-radius: 2px 2px 2px 2px;
+}*/
