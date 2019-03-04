@@ -398,28 +398,28 @@ a:link, a:visited {
           animation-delay: 0s;
 }
 .untitled__slide:nth-child(1) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/2200?image=838);
+  background-color : #000;
 }
 .untitled__slide:nth-child(2) {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
 .untitled__slide:nth-child(2) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/1000?image=1078);
+  background-color : #000;
 }
 .untitled__slide:nth-child(3) {
   -webkit-animation-delay: 10s;
           animation-delay: 10s;
 }
 .untitled__slide:nth-child(3) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/1000?image=1077);
+  background-color : #000;
 }
 .untitled__slide:nth-child(4) {
   -webkit-animation-delay: 15s;
           animation-delay: 15s;
 }
 .untitled__slide:nth-child(4) .untitled__slideBg {
-  background-image: url(https://unsplash.it/g/1500/1200?image=345);
+  background-color : #000;
 }
 .untitled__slideBg {
   position: relative;
