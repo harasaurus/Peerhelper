@@ -1,0 +1,6 @@
+Changes in H02 commit:1:
+
+-added behaviour for buttons
+-added signup and login containers
+
+comment and uncomment slideshow container to see the problem.

@@ -14,35 +14,34 @@
 	<!-- font -->
 	
 </head>
+
 <body>
 
-  	<div class="container_header" id="header-container">
-  		<div class="header" id="header">
+ 	<div class="container_header" id="header-container">
+ 		<div class="header" id="header">
 
-  			<div class="tagContainer">
+ 			<div class="tagContainer">
 
-	  			<div class="tagline" id="tagline-signup">
-	  				Become a PeerHelper
-	  			</div>
+  			<div class="tagline" id="tagline-signup">
+  				Become a PeerHelper
+  			</div>
 
-		  		<div class="tagline" id="tagline-login">
-		  			Aleardy a PeerHelper
-		  		</div>
+	  		<div class="tagline" id="tagline-login">
+	  			Aleardy a PeerHelper
 	  		</div>
+  		</div>
 
-	  		<div class="tagContainer">
-	  			<!-- removed a and add listeners for signup and login -->
-	  			<span class="tagButton" id="land-signup-button">SIGNUP</span>
-		  		<span class="tagButton" id="land-login-button">LOGIN</span>
-	  		</div>	
-  		</div>
-  	
-  		<div class="superContainer">
-  			<img class="superHero" src="img/logo_superhero_border.png">
-  		</div>
+  		<div class="tagContainer">
+  			<span class="tagButton" id="land-signup-button">SIGNUP</span>
+		  	<span class="tagButton" id="land-login-button">LOGIN</span>
+	  	</div>	
   	</div>
+  	
+  	<div class="superContainer">
+  		<img class="superHero" src="img/logo_superhero_border.png">
+  	</div>
+  </div>
 
-  	<!-- slide show -->
 	<div id="land-body-container">
 		<div class="slideshow_container">
 			<div class="untitled__slides">
@@ -82,10 +81,91 @@
 			</div>
 			<div class="untitled__shutters"></div>
 		</div>
+
+		<div id="landing_signup_container">
+			<div class="signup_container">
+			  <div class="form_container">
+			  	<div class="form_style">
+
+			  		<div class="input_container">
+			  			<span class="input_label">First Name</span>
+			  			<input class="form_input" type="text" id="signup_fname">
+			        <span class="input_label_error" id="signup_fname_error"></span>
+			  		</div>
+
+			  		<div class="input_container">
+			  			<span class="input_label">Last Name</span>
+			  			<input class="form_input" type="text" id="signup_lname">
+			        <span class="input_label_error" id="signup_lname_error"></span>
+			  		</div>
+
+			  		<div class="input_container">
+			  			<span class="input_label">Username</span>
+			  			<input class="form_input" type="text" id="signup_uname">
+			        <span class="input_label_error" id="signup_uname_error"></span>
+			  		</div>
+
+			  		<div class="input_container">
+			  			<span class="input_label">Email</span>
+			  			<input class="form_input" type="email" id="signup_email">
+			        <span class="input_label_error" id="signup_email_error"></span>
+			  		</div>  
+
+			  		<div class="input_container">
+			  			<span class="input_label">Password</span>
+			  			<input class="form_input" type="password" id="signup_pass">
+			        <span class="input_label_error" id="signup_pass_error"></span>
+			  		</div>  
+
+			  		<div class="input_container">
+			  			<span class="input_label">Re-enter Password</span>
+			  			<input class="form_input" type="password" id="signup_repass">
+			        <span class="input_label_error" id="signup_repass_error"></span>
+			  		</div>  
+			      
+			      <button id="signup_submit" class="submit_button"> SignUp</button>
+
+			  	</div>
+			  </div>
+      
+			  <div>
+			  	<img class="signup_graphic" src="img/graphic_signup.png">
+			  </div>
+			</div>			
+		</div>
+
+		<div id="landing_login_container">
+			<div class="signup_container">
+			  <div class="form_container">
+			    <div class="form_style">
+
+			      <div class="input_container">
+			        <span class="input_label">Username</span>
+			        <input class="form_input" type="text" id="login_uname">
+			        <span class="input_label_error" id="login_uname_error"></span>
+			      </div>  
+
+			      <div class="input_container">
+			        <span class="input_label">Password</span>
+			        <input class="form_input" type="password" id="login_pass">
+			        <span class="input_label_error" id="login_pass_error"></span>
+			      </div>
+
+			      <button id="login_submit" class="submit_button"> Login</button>
+
+			    </div>
+			  </div>
+			      
+			  <div>
+			    <img class="signup_graphic" src="img/graphic_signup.png">
+			  </div>
+			      
+			</div>			
+		</div>
  	</div> 	
 
  <!-- scripts -->
 <script type="text/javascript" src="scripts/jquery-3.3.1.js"> </script>	
-
+<script type="text/javascript" src="scripts/landing_init.js"> </script>
 </body>
 </html>
