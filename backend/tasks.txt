@@ -1,0 +1,80 @@
+#version control
+-fork the repository
+-clone the repository in your local server
+-make your changes
+-commit
+-pull at regular intervals to make sure that your changes are up to date
+- i will merge it and test it
+-make sure that repository includes updated structure of database 
+
+#database
+-create a database
+-store user data
+	=firstname, lastname, username, email, password
+
+#database handling from backend
+-signup functions-- add_user, username_exists
+-login functions- password_check, login
+
+#session management
+-find a strategy and tell me
+
+#requests from frontend
+-signup-- frontend will send data from signup
+		- the data will be [fname, lname, uname, email, passwword, repassword]
+		- data will be send via POST method
+		- backend script will read the data and validate it
+		- if validated- it will add the user to database, login the user and change the location of window to homepage
+		- else- it will send an error code
+-login-- frontend will send login credentials
+	   - the data will be [uname, password]
+	   - data will be send via POST method
+	   - backend script will read the data and validate it
+	   - if validated- it will login the user and change the location of window to homepage   
+
+#validation
+	-tests should be performed in the given order
+	-the validation should be done for each parameter(fname, lname, uname, email, password, repassword) even if any parameter fails the validation 
+	-the validation should be done in order for each parameter till a test fails
+
+	signup- fname1- it should not be empty
+				 2- not be longer than given length(in database)
+		  		 3- it should only contain alphabets (not even space)
+		  		 
+		  - lname 1- not be longer than given length(in database)
+		          2- it should only contain alphabets (not even space)
+		  		 
+		  - uname1- it should not be empty
+		  		 2- not be longer than given length(in database)
+		  		 3- it should only contain alphabets or number or underscore(_) (not even space)
+		  		 4- it should be unique
+
+		  - email1- it should not be empty
+		  		 2- not be longer than given length(in database)
+		  		 3- it should be a valid email address
+		  		 4- it should be unique
+
+		  - password1- it should not be empty
+
+		  - repassword1- it should not be empty
+		  			  2- it should be same as password
+		  		 	  3- it should be longer than 7 characters
+		  		 	  4- it should be shorter than database limit
+		  		 	  5- it should contain at least 1 lowercase, 1 capital letter and 1 number
+		  		 	  6- it should contain at least 1 [@#$!?_]
+		  		 	  7- it should not contain any other character
+
+	login- uname-[1] it should not be empty
+				-[3] it should be present in database
+
+		   once uname is validated:
+		   password-[2] it should not be empty
+		   
+		   once password validates:
+		   -[4]username and password match
+
+#error code 
+-signup-
+	error code would be a 6 character string, each character corresponding to 1 parameter [fname, lname, uname, email, pass, repass]: set 0 for parameter being validated correctly, and 1-7 based on the numbering of error
+
+-login- error codes:an integer, see the numbers, 0 for no error
