@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'myfontRegular';
+  src: url('fonts/Gilroy-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'myfontBold';
+  src: url('fonts/Gilroy-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'myfontHeavy';
+  src: url('fonts/Gilroy-Heavy.ttf');
+}
+
+@font-face {
+  font-family: 'myfontExtraBold';
+  src: url('fonts/Gilroy-ExtraBold.ttf');
+}
+
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+body{
+	font-family: myfontRegular;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+.clickable{
+  cursor:default;
+}
