@@ -43,14 +43,26 @@ body{
   padding-top: 130px;
 }
 
-.form_container{
+.signup_form_container{
   width: 40%;
   height: 380px;
   background-color: #fff;
   color: #000;
   padding: 40px 40px 0px 40px;
   margin-top:20px;
-  margin-right: 100px;
+  margin-right: 240px;
+  border-radius: 5px;
+  box-shadow:0px 0px 20px #b3b3b3;
+}
+
+.login_form_container{
+  width: 40%;
+  height: 185px;
+  background-color: #fff;
+  color: #000;
+  padding: 40px 40px 0px 40px;
+  margin-top:20px;
+  margin-right: 240px;
   border-radius: 5px;
   box-shadow:0px 0px 20px #b3b3b3;
 }
