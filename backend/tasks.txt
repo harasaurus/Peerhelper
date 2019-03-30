@@ -1,3 +1,7 @@
+#NOTE: every entity table must have a key(or id) specified or not
+	-so, the user table must have a user id of type autonumber
+	-go through the validations and you will find some fields cannot be null update them likewise
+
 #version control
 -fork the repository
 -clone the repository in your local server
@@ -11,15 +15,29 @@
 -create a database
 -store user data
 	=firstname, lastname, username, email, password
+-store community data
+	=name, created by(user), created on(time), no. of members, type(0-7)
+-store user community relation
+	=community id, user id, date joined, type(0-member, 1-moderator)
+-store posts data
+	=title, content(should refer to a html file in the filesystem),score, comments, posted by(user), posted on(time), posted at(community)
+-store reactions
+	=type(1 for upvote, 0 for comments, -1 for downvote), score, by(user),on(time), to(reaction id or 0 for the post itself)), at(post) 
+-store comments
+	=text, score
 
 #database handling from backend
 -signup functions-- add_user, username_exists
 -login functions- password_check, login
+-user functions- remove_user, edit_user_details
+-community functions - add_community, remove_community, add_members, remove_members, create_moderator, remove_moderator, change_type
+-post functions - add_post, remove_post, edit_post
+-reaction functions - add_reaction, remove_reaction, edit_reaction
 
 #session management
 -find a strategy and tell me
 
-#requests from frontend
+#requests from frontend(signup and login)
 -signup-- frontend will send data from signup
 		- the data will be [fname, lname, uname, email, passwword, repassword]
 		- data will be send via POST method
