@@ -1,0 +1,62 @@
+body{
+	font-family: myfontRegular;
+	overflow: hidden;
+	color: #000;
+}
+
+
+.display-flex{
+	display: flex;
+}
+
+.flex-content-space-between{
+	justify-content: space-between;
+}
+
+.header_container{
+	width: 100%;
+	background-color: #032F50;
+	padding: 10px 0px 10px 0px;
+	color: #fff;
+}
+
+
+.logo{
+	padding: 20px 30px 20px 30px;
+	font-family: 'myfontHeavy';
+	font-size: 20px;
+	line-height: 2;
+}
+
+.search_bar > input{
+	margin: 20px 30px 20px 30px;
+	padding: 10px 20px 10px 20px;
+	border-radius: 50px;
+	border: 0;
+	background-color:#012038;
+	color: #fff;
+	width: 300px;
+	
+	font-family: myfontRegular;
+
+	background-image: url("../img/magnifying-glass.svg");
+	background-repeat: no-repeat;
+	background-size: 15px 15px;
+    background-position: 95% center;
+}
+
+.search_bar > input:focus, input:hover{
+	border-radius: 5px;
+}
+
+.avatar{
+	background-image: url("../img/superhero.png");
+	height: 45px;
+	width: 45px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 35px 35px;
+	background-color: #fff;
+	margin: 20px 30px 20px 30px;
+	border-radius: 50px;
+}
