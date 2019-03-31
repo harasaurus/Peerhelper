@@ -13,14 +13,19 @@
 
 #database
 -create a database
--store user data
+
+-store user data [Done]
 	=firstname, lastname, username, email, password
--store community data
+	
+-store community data  [Done]
 	=name, created by(user), created on(time), no. of members, type(0-7)
--store user community relation
-	=community id, user id, date joined, type(0-member, 1-moderator)
+	
+-store user community relation  [Done]
+	=community id, user name, date joined, type(0-member, 1-moderator)
+	
 -store posts data
-	=title, content(should refer to a html file in the filesystem),score, comments, posted by(user), posted on(time), posted at(community)
+	=post id, title, content(should refer to a html file in the filesystem),score, comments, posted by(user), posted on(time), posted at(community) [Issue] How content attribute will refer a html file in file system-- Through URL???
+	
 -store reactions
 	=type(1 for upvote, 0 for comments, -1 for downvote), score, by(user),on(time), to(reaction id or 0 for the post itself)), at(post) 
 -store comments
