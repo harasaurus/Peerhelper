@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/style_default.css">
 	<link rel="stylesheet" type="text/css" href="styles/style_home.css">
 	<link rel="stylesheet" type="text/css" href="styles/helper_class.css">
-	
+	<link rel="stylesheet" type="text/css" href="styles/style_feed_Selector.css">
 	
 	<!-- font -->
 	
@@ -34,18 +34,36 @@
 
 <!-- main body section // 3 divisions -->
 
-	<div class="main-body-container display-flex flex-content-center">
+	<div class="main-body-container display-flex"><!--flex-content-center-->
+		<div class="feed_selector_pane">
+			<div class="feed_selector_item feed_selector_item_selected feed_selector_item_global">
+				<img>
+				<p>GLOBAL</p>
+			</div>
+
+			<div class="feed_Selector_item">
+				
+			</div>
+
+			<div class="feed_Selector_item">
+				
+			</div>
+
+			<div class="feed_Selector_item">
+				
+			</div>
+		</div>
 
 		<div class="community-feed-container">
 
 
 			<div class="card-feed">
 				<div class="feed_community_details display-flex">
-					<div class="profile_image"><img src="img/user_image_1.png" ></div>
+					<div class="community_image"><img src="img/community_default.png" ></div>
 					<div class="display-flex post_details">
-						<div class="title_name">Community name</div>
-						<div class="">By <span>user</span></div>
-						<div>Created on <span>date</span></div>
+						<div class="post_community">Community name</div>
+						<div class="">By <div class="post_user">user</div></div>
+						<div>Created on <div class="post_date">date</div></div>
 					</div>
 				</div>
 				<div class="post_feed display-flex" >
@@ -92,7 +110,7 @@
 			</div>
 		</div>
 
-		<div class="suggestion">
+		<div class="suggestion" id="suggestion_pane">
 			<div class="card-suggestion">Suggestion 1</div>
 			<div class="card-suggestion">Suggestion 2</div>
 		</div>

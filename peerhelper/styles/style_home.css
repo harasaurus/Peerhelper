@@ -80,15 +80,15 @@ body{
 
 
 .community-feed-container{
-	width: 70%;
+	width: 50%;
 }
 
 .suggestion{
 }
 
 .card-feed{
-	width: 50%;
-	
+	width: 75%;
+	height: auto;
 	padding: 20px;
 	margin: 30px;
 	background-color: #fff;
@@ -98,10 +98,10 @@ body{
 }
 
 .card-suggestion{
-	width: 90%;
-	padding: 20px;
-	margin: 30px;
-	height: 60px;
+	width: 70%;
+	padding: 10px;
+	margin: 20px;
+	height: 30px;
 	background-color: #fff;
 	border-radius: 5px;
 	color: #2f2f2f;
@@ -110,13 +110,24 @@ body{
 }
 
 
-.profile_image > img{
+.community_image > img{
 	width: 40px;
 	height: 40px;
 }
 
-.title_name{
+.post_community{
 	font-family: 'myfontBold';
+	width:140px;
+}
+
+.post_user{
+  display:inline-block;
+	width:82px;
+}
+
+.post_date{
+  display: inline-block;
+	width:80px; 
 }
 
 .post_details{
@@ -148,10 +159,11 @@ body{
 }
 
 .post_image{
-	width: 40%;
-	height: auto;
+	width: 200px;
+	height: 112px;
 	background-image:url("../img/sample_img_posts (1).jpg");
 	background-size: 100% auto;	
 	background-position: center;
 	background-repeat: no-repeat;
+	max-height: ;
 }

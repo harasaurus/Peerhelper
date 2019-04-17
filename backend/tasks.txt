@@ -1,6 +1,7 @@
 #NOTE: every entity table must have a key(or id) specified or not
 	-so, the user table must have a user id of type autonumber
 	-go through the validations and you will find some fields cannot be null update them likewise
+#UPDATE: a new folder is created in the peerhelper directory(server): it contains all the scripts for backend calls, these scripts do not work as of now and needs to be updated  
 
 #version control
 -fork the repository
@@ -14,17 +15,23 @@
 #database
 -create a database
 -store user data
-	=firstname, lastname, username, email, password
+	=id(autonumber), firstname(varchar(15)), lastname(varchar(15)), username(varchar(15)), email(varchar(255)), password(varchar(15))
+	::every field (except lastname) null
+	::unique email and username
 -store community data
-	=name, created by(user), created on(time), no. of members, type(0-7)
+	=id(autonumber),name(varchar(16)), created by(foreign key on user.id), created on(date), no. of members(number), type(number(1))
+	::all fields not null
+	::unique name
 -store user community relation
-	=community id, user id, date joined, type(0-member, 1-moderator)
+	=community id(foreign key on community.id), user id(foreign key on user.id), date joined(date), is_mod(boolean)
+	::all fields not null
 -store posts data
-	=title, content(should refer to a html file in the filesystem),score, comments, posted by(user), posted on(time), posted at(community)
+	=id(autonumber), title(varchar(255)), post_text(text), score(number(6)), no_of_comments(number(5)), posted by(foreign key on user.id), posted on(date), posted at(foreign key on community.id)
+	::all fields not null
 -store reactions
-	=type(1 for upvote, 0 for comments, -1 for downvote), score, by(user),on(time), to(reaction id or 0 for the post itself)), at(post) 
--store comments
-	=text, score
+	=id(autonumber), type(char(1)), by(foreign key on user.id), time(datetime), to_reaction(number(5)), at(foreign key on post.id), comment_text(varchar(255)), score(number(6)), no_of_comments(number(5)) 
+	::comment_text, score and no_of_comments can be null
+	::other fields not null
 
 #database handling from backend
 -signup functions-- add_user, username_exists
@@ -38,17 +45,17 @@
 -find a strategy and tell me
 
 #requests from frontend(signup and login)
--signup-- frontend will send data from signup
-		- the data will be [fname, lname, uname, email, passwword, repassword]
+-signup(signup.php)-- frontend will send data from signup
+		- the data will be [fname, lname, uname, email, password, repassword]
 		- data will be send via POST method
 		- backend script will read the data and validate it
-		- if validated- it will add the user to database, login the user and change the location of window to homepage
-		- else- it will send an error code
--login-- frontend will send login credentials
+		- if validated- it will add the user to database, login the user and echo success code("0")
+		- else- it will echo an error code
+-login(login.php)-- frontend will send login credentials
 	   - the data will be [uname, password]
 	   - data will be send via POST method
 	   - backend script will read the data and validate it
-	   - if validated- it will login the user and change the location of window to homepage   
+	   - if validated- it will login the user and echo success code("0")   
 
 #validation
 	-tests should be performed in the given order
@@ -56,43 +63,39 @@
 	-the validation should be done in order for each parameter till a test fails
 
 	signup- fname1- it should not be empty
-				 2- not be longer than given length(in database)
-		  		 3- it should only contain alphabets (not even space)
+				 3- not be longer than given length(in database)
+		  		 5- it should only contain alphabets (not even space)
 		  		 
-		  - lname 1- not be longer than given length(in database)
-		          2- it should only contain alphabets (not even space)
+		  - lname 3- not be longer than given length(in database)
+		          5- it should only contain alphabets (not even space)
 		  		 
 		  - uname1- it should not be empty
-		  		 2- not be longer than given length(in database)
-		  		 3- it should only contain alphabets or number or underscore(_) (not even space)
-		  		 4- it should be unique
+		  		 3- not be longer than given length(in database)
+		  		 4- first letter should only be a letter or underscore
+		  		 5- it should only contain alphabets or number or underscore(_) (not even space)
+		  		 6- it should be unique
 
 		  - email1- it should not be empty
-		  		 2- not be longer than given length(in database)
-		  		 3- it should be a valid email address
-		  		 4- it should be unique
+		  		 4- it should be a valid email address(format wise)
+		  		 6- it should be unique
 
 		  - password1- it should not be empty
 
-		  - repassword1- it should not be empty
-		  			  2- it should be same as password
-		  		 	  3- it should be longer than 7 characters
-		  		 	  4- it should be shorter than database limit
-		  		 	  5- it should contain at least 1 lowercase, 1 capital letter and 1 number
-		  		 	  6- it should contain at least 1 [@#$!?_]
-		  		 	  7- it should not contain any other character
+		  - repassword2- it should be same as password
+		  		 	  3- it should be 8 to 15 character long
+		  		 	  4- it should contain at least 1 lowercase, 1 capital letter, 1 number
+		  		 	  5- it should not contain any character other than alphabets, numbers and [@#$!?_](not even space)
 
 	login- uname-[1] it should not be empty
 				-[3] it should be present in database
 
-		   once uname is validated:
 		   password-[2] it should not be empty
 		   
-		   once password validates:
+		   once uname and password validates:
 		   -[4]username and password match
 
 #error code 
 -signup-
 	error code would be a 6 character string, each character corresponding to 1 parameter [fname, lname, uname, email, pass, repass]: set 0 for parameter being validated correctly, and 1-7 based on the numbering of error
 
--login- error codes:an integer, see the numbers, 0 for no error
+-login- error codes:a character, see the numbers, 0 for no error

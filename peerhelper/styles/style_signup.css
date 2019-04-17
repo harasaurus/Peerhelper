@@ -40,7 +40,7 @@
 
 .input_container{
   width: 45%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 
@@ -52,25 +52,28 @@
 }
 
 .form_input{
-  width: 95%;
-  height: 30px;
+  width: 100%;
+  height: 40px;
   display: block;
   border: 0px;
-  border-radius: 1px;
-
+  
+  box-sizing: border-box;
+  
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
  
-
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   font-size: 15px;
   
   background-color: #dfd3ff;
 }
 
+.form_input_invalid{
+  border:1px #b33 solid;
+}
 
 .signup_graphic{
   height: 450px;
