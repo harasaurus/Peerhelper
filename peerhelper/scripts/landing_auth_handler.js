@@ -103,7 +103,9 @@ function validate_login_credential(uname, password){
 	if(!password){
 		validated = false;
 		show_error("login_pass", "Password is required");
-	}	
+	}
+
+	return validated;	
 }
 
 function signup(fname, lname, uname, email, pass, repass){
@@ -115,16 +117,17 @@ function signup(fname, lname, uname, email, pass, repass){
   			lname: lname,
   			uname: uname, 
   			email: email,
-  			password: pass,
-  			repassword: repass
+  			pass: pass,
+  			repass: repass
   		},
   		success: (code)=>{
  			if(code == "0"){
  				window.location = "./home.html?uname=" + uname;
  			}else{
+ 				console.log("error code received from signup:",code);
  				signup_error_handler(code);
  			}
-  		},
+  		}
 	});
 }
 
@@ -134,12 +137,13 @@ function login(uname, password){
   		url: "server/login.php",
   		data: {
   			uname: uname, 
-  			password: password,
+  			pass: password,
   		},
   		success: (code)=>{
  			if(code == "0"){
  				window.location = "./home.html?uname=" + uname;
  			}else{
+ 				console.log(code);
  				login_error_handler(code);
   			}
   		}
@@ -161,7 +165,7 @@ function login_error_handler(code){
 		break;
 
 		case "2":
-			show_error("login_uname", "Password is mandatory");
+			show_error("login_pass", "Password is mandatory");
 		break;
 
 		case "3":
@@ -169,10 +173,10 @@ function login_error_handler(code){
 		break;
 
 		case "4":
-			show_error("login_uname", "Wrong password");
+			show_error("login_pass", "Wrong password");
 		break;
 		default:
-			console.log("error_code=", error_code);
+			console.log("error_code=", code);
 			return;
 	}
 }
@@ -182,7 +186,7 @@ function signup_error_code_handler(field, error_code){
 	var message;
 
 	switch(field){
-		case "0":
+		case 0:
 			element_id = "signup_fname";
 			switch(error_code){
 				case "0":
@@ -203,7 +207,7 @@ function signup_error_code_handler(field, error_code){
 			}
 		break;
 
-		case "1":
+		case 1:
 			element_id = "signup_lname";
 			switch(error_code){
 				case "0":
@@ -221,7 +225,7 @@ function signup_error_code_handler(field, error_code){
 			}
 		break;
 
-		case "2":
+		case 2:
 			element_id = "signup_uname";
 			switch(error_code){
 				case "0":
@@ -248,7 +252,7 @@ function signup_error_code_handler(field, error_code){
 			}
 		break;
 
-		case "3":
+		case 3:
 			element_id = "signup_email";
 			switch(error_code){
 				case "0":

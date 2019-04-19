@@ -34,7 +34,7 @@ function email_format_validate(text){
 }
 
 function password_format_validate(text){
-	if(text.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]$/)){
+	if(text.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@#$!?_]*$/)){
 		return true;
 	}
 	return false;
