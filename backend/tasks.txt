@@ -1,7 +1,9 @@
 #NOTE: every entity table must have a key(or id) specified or not
 	-so, the user table must have a user id of type autonumber
 	-go through the validations and you will find some fields cannot be null update them likewise
+	-by autonumber i mean, auto increment on a number(or int) type field
 #UPDATE: a new folder is created in the peerhelper directory(server): it contains all the scripts for backend calls, these scripts do not work as of now and needs to be updated  
+
 
 #version control
 -fork the repository
@@ -22,16 +24,17 @@
 	=id(autonumber),name(varchar(16)), created by(foreign key on user.id), created on(date), no. of members(number), type(number(1))
 	::all fields not null
 	::unique name
--store user community relation
+-store user community relation(members)
 	=community id(foreign key on community.id), user id(foreign key on user.id), date joined(date), is_mod(boolean)
 	::all fields not null
 -store posts data
 	=id(autonumber), title(varchar(255)), post_text(text), score(number(6)), no_of_comments(number(5)), posted by(foreign key on user.id), posted on(date), posted at(foreign key on community.id)
 	::all fields not null
 -store reactions
-	=id(autonumber), type(char(1)), by(foreign key on user.id), time(datetime), to_reaction(number(5)), at(foreign key on post.id), comment_text(varchar(255)), score(number(6)), no_of_comments(number(5)) 
-	::comment_text, score and no_of_comments can be null
-	::other fields not null
+	=id(autonumber), type(char(1)), by(foreign key on user.id), time(datetime), at(foreign key on post.id) 
+	::all fields not null
+-store comments
+	=id(autonumber), at(foreign key on post.id), by(foreign key on user.id), time(timestamp), text(varchar(255))
 
 #database handling from backend
 -signup functions-- add_user, username_exists
@@ -86,13 +89,12 @@
 		  		 	  4- it should contain at least 1 lowercase, 1 capital letter, 1 number
 		  		 	  5- it should not contain any character other than alphabets, numbers and [@#$!?_](not even space)
 
-	login- uname-[1] it should not be empty
-				-[3] it should be present in database
+	login- [1]uname should not be empty
+		   [2]password should not be empty
+		   [3]username should be present in database
 
-		   password-[2] it should not be empty
-		   
 		   once uname and password validates:
-		   -[4]username and password match
+		   [4]username and password match
 
 #error code 
 -signup-
