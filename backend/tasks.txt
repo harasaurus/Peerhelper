@@ -36,29 +36,89 @@
 -store comments
 	=id(autonumber), at(foreign key on post.id), by(foreign key on user.id), time(timestamp), text(varchar(255))
 
-#database handling from backend
--signup functions-- add_user, username_exists
--login functions- password_check, login
--user functions- remove_user, edit_user_details
--community functions - add_community, remove_community, add_members, remove_members, create_moderator, remove_moderator, change_type
--post functions - add_post, remove_post, edit_post
--reaction functions - add_reaction, remove_reaction, edit_reaction
-
 #session management
 -find a strategy and tell me
 
 #requests from frontend(signup and login)
 -signup(signup.php)-- frontend will send data from signup
-		- the data will be [fname, lname, uname, email, password, repassword]
+		- the data will be [fname, lname, uname, email, pass, repass]
 		- data will be send via POST method
 		- backend script will read the data and validate it
 		- if validated- it will add the user to database, login the user and echo success code("0")
 		- else- it will echo an error code
 -login(login.php)-- frontend will send login credentials
-	   - the data will be [uname, password]
+	   - the data will be [uname, pass]
 	   - data will be send via POST method
 	   - backend script will read the data and validate it
 	   - if validated- it will login the user and echo success code("0")   
+-search(search.php)-- frontend will send search query
+		-the data will be[query, uname]
+		-data will be send via POST method
+		-backend script will read the data and find communities with matching names in the database
+		-it will then send the data in JSON format
+		-format will be as specified:
+			if no community matches the name
+			{
+				number : 0
+			}
+			else
+			{
+				number: number_of_results,
+				search_items: [
+								{
+									id : community_id,
+									name : community_name,
+									is_member : boolean(true if uname is member of the community)
+								},{
+									...
+								}
+							]
+			}
+-get community list(getCommunities.php)--frontend will send [uname] via POST
+		-backend script will return the list of communities, user is a member of, in a JSON format
+		-format will be as specified:
+			if user have not joined any community
+			{
+				number : 0
+			}
+			else
+			{
+				number : number of communities,
+				communities : [
+								{
+									id : id,
+									name : name
+								}
+							]
+			}
+-get resource from server(getResource.php)--frontend will send[uri, return] via GET
+		-uri is the path of resource, and return type is return type expected from the server
+		-server will fetch the resource and send it to frontend
+-get posts(getPosts.php)--frontend will send[uname] via GET
+		-backend script will send back the posts from the communities that the user has joined sorted in decreasing order by time in a JSON format as specified:
+			if no post:
+			{
+				number:0
+			}
+			else:
+			{
+				number:number of posts,
+				posts : [
+							{
+								community :{
+										id : id,
+										name : name
+									}
+								by : user_name,
+								on : date,
+								post : {
+									id : id,
+									title : title,
+									content : text
+								}
+							}
+					]
+			}
 
 #validation
 	-tests should be performed in the given order
