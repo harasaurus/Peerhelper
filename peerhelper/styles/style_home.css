@@ -6,7 +6,6 @@ body{
 
 }
 
-
 .display-flex{
 	display: flex;
 }
@@ -29,7 +28,6 @@ body{
 	padding: 10px 0px 10px 0px;
 	color: #fff;
 }
-
 
 .logo{
 	padding: 20px 30px 20px 30px;
@@ -73,14 +71,19 @@ body{
 	cursor: pointer;
 }
 
+.home_right_pane{
+  width:20%;
+  background-color: #2c5;
+}
 
 .main-body-container{
 	padding-top: 100px;
 }
 
 
-.community-feed-container{
+.home_body{
 	width: 50%;
+	min-height: 515px
 }
 
 .suggestion{
@@ -161,7 +164,6 @@ body{
 .post_image{
 	width: 200px;
 	height: 112px;
-	background-image:url("../img/sample_img_posts (1).jpg");
 	background-size: 100% auto;	
 	background-position: center;
 	background-repeat: no-repeat;
