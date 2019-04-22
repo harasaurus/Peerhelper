@@ -119,6 +119,28 @@
 							}
 					]
 			}
+-get suggestions(getSuggestions.php)--frontend will send [uname] via POST
+	-backend script will send back the list of 5(or less) communities that user has not joined in a JSON format as specified:
+		if no suggestions:
+		{
+			number:0
+		} 
+		else:
+		{
+			number:number of suggestions,
+			suggestions:[
+							{
+								id: id,
+								name : name
+							}
+					]
+		}
+-create community(createCommunity.php)--frontend will send [uname, cname] via POST
+	-backend script will validate the script and if validated create the community and add user to it
+	-validations will be performed in this order and appropriate code will be sent for the errors(0 for no error)
+		1-community name should start with an alphabet
+		2-community name should contain only alphabets, numbers or underscore
+		3-community name should be unique
 
 #validation
 	-tests should be performed in the given order
