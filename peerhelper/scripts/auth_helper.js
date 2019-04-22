@@ -47,3 +47,11 @@ function username_format_validate(text){
 	}
 	return false;
 }
+
+function community_format_validate(text){
+	var character = text.charAt(0);
+	if(character.match(/^[a-zA-Z]$/)){
+		return true;
+	}
+	return false;
+}

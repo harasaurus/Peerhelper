@@ -1,16 +1,21 @@
-function feed_selector_unselect_all(){
-	$('.feed_selector_item_selected').removeClass("feed_selector_item_selected");
+function feed_selector_unselect_global(){
+	$("#feed_selector_global").removeClass("feed_selector_item_selected");
+	$("#feed_selector_global").on("click",()=>{
+		show_global_feed_selector();
+	});
+}
+
+function show_global_feed_selector(){
+	$("#feed_selector_global").off();
+	clear_search_results();
+	$("#feed_selector_global").addClass("feed_selector_item_selected");
+	show_feeds();
 }
 
 function load_feed_selector(){
-	$('#home_right_pane').load('./layout/feed_selector.html', ()=>{
+	$('#home_left_pane').load('./layout/feed_selector.html', ()=>{
 		populate_feed_selector();
 	});	
-}
-
-
-function load_suggestions(){
-	return;
 }
 
 function populate_feed_selector(){
@@ -44,11 +49,9 @@ function feed_selector_layout_setter(community_list){
   			set_feed_selector_layout(number, community_list.communities);
   		}
 	});
-
 }
 
 function set_feed_selector_layout(number, communities){
-	
 	for(var community of communities){
 		add_to_feed_selector(community);
 	}
@@ -64,6 +67,13 @@ function add_to_feed_selector(community){
 	new_feed_selector_item.attr("id", new_feed_selector_item_id);
 	new_feed_selector_item.find("img").attr("src", new_feed_selector_item_img);
 	new_feed_selector_item.find("p").html(community_name);
+	new_feed_selector_item.on("click", ()=>{
+		goto_community_feed(community.name);
+	});
 
-	$("#home_right_pane").append(new_feed_selector_item);
+	$("#home_left_pane").append(new_feed_selector_item);
+}
+
+function goto_community_feed(name){
+	window.location = "./community.html?uname=" + username + "&cname=" + name; 
 }

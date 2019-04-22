@@ -35,7 +35,6 @@ function set_empty_feed_layout(){
 }
 
 function set_feed_layout(posts){
-	console.log("po",posts);
 	$.ajax({
       type: "GET",
       url: "server/getResource.php",
@@ -52,7 +51,6 @@ function set_feed_layout(posts){
 }
 
 function add_feeds(posts){
-	console.log(posts);
 	for(var post of posts){
 		add_to_feed(post);
 	}
@@ -82,6 +80,10 @@ function add_to_feed(post){
 	new_feed_item.find(".post_image").css("background-image", item_img);
 	new_feed_item.find(".title_name").html(item_title);
 	new_feed_item.find(".post_content").html(item_content);
+
+	new_feed_item.on("click", ()=>{
+		goto_post(community_name, post.post.id);
+	});
 
 	$("#home_body").append(new_feed_item);
 }

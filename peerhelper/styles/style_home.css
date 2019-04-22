@@ -54,7 +54,7 @@ body{
     background-position: 95% center;
 }
 
-.search_bar > input:focus, input:hover{
+.search_bar input:focus, input:hover{
 	border-radius: 5px;
 }
 
@@ -71,7 +71,7 @@ body{
 	cursor: pointer;
 }
 
-.home_right_pane{
+.home_left_pane{
   width:20%;
   background-color: #2c5;
 }
@@ -86,7 +86,8 @@ body{
 	min-height: 515px
 }
 
-.suggestion{
+.home_right_pane{
+	width:20%
 }
 
 .card-feed{
@@ -98,6 +99,27 @@ body{
 	color: #2f2f2f;
 	border-radius: 5px;
 	box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.1);
+}
+
+.create_community_btn > input{
+margin: 20px 30px 20px 30px;
+	padding: 10px 20px 10px 20px;
+	border-radius: 50px;
+	border: 0;
+	background-color:#012038;
+	color: #fff;
+	width: 300px;
+	
+	font-family: myfontRegular;
+
+	background-image: url("../img/add.svg");
+	background-repeat: no-repeat;
+	background-size: 15px 15px;
+    background-position: 95% center;
+}
+
+.create_community_btn > input:focus, input:hover{
+	border-radius: 5px;
 }
 
 .card-suggestion{

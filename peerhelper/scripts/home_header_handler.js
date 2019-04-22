@@ -25,8 +25,10 @@ function header_search(){
   			uname : username
   		},
   		success: (result)=>{
- 			search_result_layout_setter(result);
- 			feed_selector_unselect_all();
-  		}
+  			feed_selector_unselect_global();
+  			show_search_results();
+  			clear_search_results();
+ 			search_result_layout_setter(JSON.parse(result));
+ 		}
 	});
 }
