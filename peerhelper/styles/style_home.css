@@ -27,6 +27,7 @@ body{
 	background-color: #032F50;
 	padding: 10px 0px 10px 0px;
 	color: #fff;
+	margin-bottom: 8px;
 }
 
 .logo{
@@ -73,11 +74,11 @@ body{
 
 .home_left_pane{
   width:20%;
-  background-color: #2c5;
+  background-color: #fff;
 }
 
 .main-body-container{
-	padding-top: 100px;
+	padding-top: 106px;
 }
 
 
