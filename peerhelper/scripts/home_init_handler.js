@@ -1,6 +1,5 @@
 function initialize(){
 	show_feeds();
-
 	load_header();
 	load_body();
 }

@@ -22,6 +22,4 @@
 	}else{
 		echo $validation_code;
 	}
-
-	
 ?>

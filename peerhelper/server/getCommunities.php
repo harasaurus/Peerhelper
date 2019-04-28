@@ -1,8 +1,9 @@
 <?php
-	$response["number"] = 1;
-	$community["id"] = 0;
-	$community["name"] = "default";
-	$response["communities"] = array($community);
+	include "helpers/database.php";
+	
+	$uname = $_POST["uname"];
+
+	$response = getCommunities($uname);
 
 	$json_response = json_encode($response);
 

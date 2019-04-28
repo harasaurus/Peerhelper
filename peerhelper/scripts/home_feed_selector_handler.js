@@ -68,12 +68,9 @@ function add_to_feed_selector(community){
 	new_feed_selector_item.find("img").attr("src", new_feed_selector_item_img);
 	new_feed_selector_item.find("p").html(community_name);
 	new_feed_selector_item.on("click", ()=>{
-		goto_community_feed(community.name);
+		console.log("goto_community_feed(",community.id,",", community.name,",0)");
+		goto_community_feed(community.id, community.name, 0);
 	});
 
 	$("#home_left_pane").append(new_feed_selector_item);
-}
-
-function goto_community_feed(name){
-	window.location = "./community.html?uname=" + username + "&cname=" + name; 
 }

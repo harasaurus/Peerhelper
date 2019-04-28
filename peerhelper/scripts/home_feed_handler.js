@@ -3,9 +3,11 @@ function load_feeds(){
 		type: "GET",
   		url: "server/getPosts.php",
   		data: {
-  			uname : username
+  			uname : username,
+  			cid : 0
   		},
   		success: (response)=>{
+  			console.log(response);
   			feed_layout_setter(JSON.parse(response))
   		}
 	});
@@ -63,7 +65,7 @@ function add_to_feed(post){
 	var community_img = "data/images/community/community_" + post.community.id + ".png";
 	
 	var post_by = post.by;
-	var post_time = post.on;
+	//var post_time = post.on;
 
 	var item_id = "feedItem_" + post.post.id;
 	var item_img = "url('data/images/post/post_" + post.post.id + ".jpg')";
@@ -75,7 +77,7 @@ function add_to_feed(post){
 	new_feed_item.find(".feed_item_community_img").attr("src", community_img);
 	new_feed_item.find(".post_community").html(community_name);
 	new_feed_item.find(".post_user").html(post_by);
-	new_feed_item.find(".post_date").html(post_time);
+	//new_feed_item.find(".post_date").html(post_time);
 
 	new_feed_item.find(".post_image").css("background-image", item_img);
 	new_feed_item.find(".title_name").html(item_title);

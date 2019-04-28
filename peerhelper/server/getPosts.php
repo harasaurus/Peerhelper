@@ -1,20 +1,14 @@
 <?php
-	$response["number"] = 1;
+	include 'helpers/database.php';
 
-	$community["id"] = 0;
-	$community["name"] = "default";
+	$uname = $_GET["uname"];
+	$cid = $_GET["cid"];
 
-	$post["community"] = $community;
-	$post["by"] = "admin";
-	$post["on"] = "2019-01-01";
-
-	$post_data["id"] = 0;
-	$post_data["title"] = "TITLE";
-	$post_data["content"] = "content";
-
-	$post["post"] = $post_data;
-
-	$response["posts"] = array($post);
+	if($cid == "0"){
+		$response = getGlobalFeed($uname);
+	}else{
+		$response = getCommunityFeed($cid);
+	}
 
 	$json_response = json_encode($response);
 

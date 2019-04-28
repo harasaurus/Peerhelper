@@ -94,8 +94,10 @@
 -get resource from server(getResource.php)--frontend will send[uri, return] via GET
 		-uri is the path of resource, and return type is return type expected from the server
 		-server will fetch the resource and send it to frontend
--get posts(getPosts.php)--frontend will send[uname] via GET
-		-backend script will send back the posts from the communities that the user has joined sorted in decreasing order by time in a JSON format as specified:
+-get posts(getPosts.php)--frontend will send[uname, cid] via GET
+		-if(cid==0)backend script will send back the posts from the communities that the user has joined sorted in decreasing order by time in a JSON format
+		-else backend script will send back the posts from the community specified by cid
+		JSON format as specified:
 			if no post:
 			{
 				number:0
@@ -110,11 +112,12 @@
 										name : name
 									}
 								by : user_name,
-								on : date,
 								post : {
 									id : id,
 									title : title,
-									content : text
+									content : text,
+									score : score,
+									comments : comments
 								}
 							}
 					]
@@ -141,6 +144,11 @@
 		1-community name should start with an alphabet
 		2-community name should contain only alphabets, numbers or underscore
 		3-community name should be unique
+	-the output to the frontend will be in format:
+		{
+			code: code,
+			id:(if code==0)
+		}
 
 #validation
 	-tests should be performed in the given order
@@ -183,3 +191,7 @@
 	error code would be a 6 character string, each character corresponding to 1 parameter [fname, lname, uname, email, pass, repass]: set 0 for parameter being validated correctly, and 1-7 based on the numbering of error
 
 -login- error codes:a character, see the numbers, 0 for no error
+
+
+#ignore:::
+SELECT community.community_id, community.community_name, users.username, posts_data.post_id, posts_data.title, posts_data.text FROM community, users, posts_info, posts_data WHERE posts_info.post_id = posts_data.post_id AND posts_info.community = community.community_id AND posts_info.user = users.user_id AND posts_info.community = 1 

@@ -55,3 +55,10 @@ function community_format_validate(text){
 	}
 	return false;
 }
+
+function post_image_format_validate(text){
+	if(text.match(/^.*\.jp[e]?g$/i)){
+		return true;
+	}
+	return false;
+}

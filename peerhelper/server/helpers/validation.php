@@ -32,4 +32,11 @@
 	function validateLoginCredential($username, $password){
 		return matchCredentials($username, $password);
 	}
+
+	function validateCommunity($cname){
+		if(communityNameExist($cname)){
+			return 3;
+		}
+		return 0;	
+	}
 ?>

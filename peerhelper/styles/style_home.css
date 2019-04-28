@@ -102,13 +102,13 @@ body{
 }
 
 .create_community_btn > input{
-margin: 20px 30px 20px 30px;
+	margin: 20px 0px 20px 0px;
 	padding: 10px 20px 10px 20px;
-	border-radius: 50px;
+	border-radius: 15px;
 	border: 0;
 	background-color:#012038;
 	color: #fff;
-	width: 300px;
+	width: 235px;
 	
 	font-family: myfontRegular;
 
@@ -121,6 +121,12 @@ margin: 20px 30px 20px 30px;
 .create_community_btn > input:focus, input:hover{
 	border-radius: 5px;
 }
+
+.input_invalid{
+	background : #dd3e3e;
+}
+
+#dd3e3e
 
 .card-suggestion{
 	width: 70%;

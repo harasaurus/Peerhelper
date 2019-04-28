@@ -1,0 +1,46 @@
+.community_post_create_button{
+	width: 100px;
+	background: blueviolet;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.post_create_input{
+	width: 90%;
+	height: 40px;
+	display: block;
+	border: 0px;
+	box-sizing: border-box;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 15px;
+	margin-top: 20px;
+	margin-left: 40px;
+	font-size: 15px;
+	background-color: #dfd3ff;
+}
+
+.post_create_error{
+	border : 1px #b33 solid;
+}
+
+.post_create_input_error{
+	background: 2px #b33 solid;
+}
+
+#post_create_title{
+
+}
+
+#post_create_img{
+	padding-top: 0px;	
+}
+
+#post_create_text{
+	height: 200px;
+	resize: none;
+}
+
+#post_create_submit{
+	background: blueviolet;
+}
