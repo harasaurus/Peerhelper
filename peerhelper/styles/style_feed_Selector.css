@@ -1,19 +1,17 @@
 .feed_selector_item{
   width:100%;
-  height:50px;
+  background-color: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
   
-  background-color: #34c;
-  
-  margin-top:5px;
+
 } 
 
 .feed_selector_item_image{
-  display: inline-block;
-  width: 25%;
+  
+  width: auto;
   height: 40px;
-
-  padding: 5px;
-  padding-left:15px;
+  padding-left: 15px;
 }
 
 .feed_selector_item_image img{
@@ -22,18 +20,36 @@
 }
 
 .feed_selector_item_text{
-	display: inline-block;
+
 }
 
-.feed_selector_item_text p{
+.feed_selector_item_text span{
 	font-size: 20px;
-  font-weight:bolder;
+  font-family: 'myfontBold';
+  line-height: 2.1;
+  margin-left: 20px;
+
 }
 
 .feed_selector_item_selected{
-  background-color: #014;
+  background-color: #e9e9e9;
 } 
 
 .feed_selector_item_global{
 
+}
+
+.reaction{
+  margin-right: 20px;
+  padding-top: 15px;
+}
+
+.reaction_comment{
+   margin-right: 20px;
+  padding-top: 15px;
+}
+
+.reaction_score{
+  margin-right: 20px;
+  padding-top: 15px;
 }
