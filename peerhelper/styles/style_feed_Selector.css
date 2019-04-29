@@ -1,6 +1,6 @@
 .feed_selector_item{
   width:100%;
-  background-color: inherit;
+  background-color: #fff;
   padding-top: 15px;
   padding-bottom: 15px;
   
@@ -19,12 +19,9 @@
   height: 40px;
 }
 
-.feed_selector_item_text{
 
-}
-
-.feed_selector_item_text span{
-	font-size: 20px;
+.feed_selector_item_text {
+	font-size: 16px;
   font-family: 'myfontBold';
   line-height: 2.1;
   margin-left: 20px;
@@ -44,9 +41,17 @@
   padding-top: 15px;
 }
 
+.reaction_selected > svg{
+  fill: red;
+}
+
 .reaction_comment{
-   margin-right: 20px;
+   margin-left: 40px;
   padding-top: 15px;
+}
+
+.reaction_comment span{
+  margin-right: 10px
 }
 
 .reaction_score{
