@@ -318,6 +318,7 @@ function getGlobalFeed($uname){
 			$post_data["text"] = $row["post_text"];
 			$post_data["score"] = $row["score"];
 			$post_data["comments"] = $row["comments"];
+			$post_data["user_score"] = getUserScore($post_data["id"], $uname);
 			$post["post"] = $post_data;
 			array_push($posts, $post);
 		}
@@ -330,7 +331,7 @@ function getGlobalFeed($uname){
 	return 0;
 }
 
-function getCommunityFeed($cid){
+function getCommunityFeed($cid, $uname){
 	$dbserver = $GLOBALS['dbserver'];
 	$dbusername = $GLOBALS['dbusername'];
 	$dbpassword = $GLOBALS['dbpassword'];
@@ -360,6 +361,7 @@ function getCommunityFeed($cid){
 			$post_data["text"] = $row["post_text"];
 			$post_data["score"] = $row["score"];
 			$post_data["comments"] = $row["comments"];
+			$post_data["user_score"] = getUserScore($post_data["id"], $uname);
 			$post["post"] = $post_data;
 			array_push($posts, $post);
 		}
@@ -370,6 +372,35 @@ function getCommunityFeed($cid){
 	}
 
 	return 0;
+}
+
+function getUserScore($pid, $uname){
+	$dbserver = $GLOBALS['dbserver'];
+	$dbusername = $GLOBALS['dbusername'];
+	$dbpassword = $GLOBALS['dbpassword'];
+	$dbname = $GLOBALS['dbname'];
+
+	$uid = getUid($uname);
+	$dbhandler = new mysqli($dbserver,$dbusername,$dbpassword,$dbname);
+	if ($dbhandler) {
+		$query = "SELECT score FROM user_score WHERE post_id = '$pid' AND user_id = '$uid'";
+		$result = $dbhandler -> query($query);
+		
+		if($result->num_rows == 0){
+			$dbhandler->close();
+			return 0;
+		}
+
+		$row = $result->fetch_assoc();
+		$dbhandler->close();
+		return $row["score"];		
+	}
+
+	return 0;
+}
+
+function getComments($pid){
+
 }
 
 ?>

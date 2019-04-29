@@ -7,7 +7,7 @@
 	if($cid == "0"){
 		$response = getGlobalFeed($uname);
 	}else{
-		$response = getCommunityFeed($cid);
+		$response = getCommunityFeed($cid, $uname);
 	}
 
 	$json_response = json_encode($response);
