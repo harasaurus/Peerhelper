@@ -31,7 +31,7 @@ function set_post_creator(){
       },
       success: (layout)=>{
         $("#post_body").empty();
-        $("#home_right_pane").empty();
+        $("#home_right_pane").hide();
         add_listener();
         show_post();
         add_post_creator(layout);
@@ -41,10 +41,15 @@ function set_post_creator(){
 
 function add_listener(){
   $(".feed_selector_item_selected").on("click",()=>{
-    $(".feed_selector_item_selected").off();
-    $("#post_body").empty();
-    show_community_feed();
+    back_from_post_creator();
   });
+}
+
+function back_from_post_creator(){
+  $(".feed_selector_item_selected").off();
+  $("#post_body").empty();
+  $("#home_right_pane").show();
+  show_community_feed();
 }
 
 function add_post_creator(layout){
@@ -73,12 +78,13 @@ function create_post(){
         success: (response)=> {
           console.log(response);
           if(response != 0){
-            goto_post(response);
+            send_post_img(response);
           }
         }
     });
   }
 }
 
-function goto_post(post_id){
+function send_post_img(id){
+  
 }
