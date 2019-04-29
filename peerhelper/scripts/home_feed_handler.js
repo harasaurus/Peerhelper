@@ -8,7 +8,7 @@ function load_feeds(){
   		},
   		success: (response)=>{
   			console.log(response);
-  			feed_layout_setter(JSON.parse(response))
+  			feed_layout_setter(JSON.parse(response));
   		}
 	});
 }
@@ -70,7 +70,7 @@ function add_to_feed(post){
 	var item_id = "feedItem_" + post.post.id;
 	var item_img = "url('data/images/post/post_" + post.post.id + ".jpg')";
 	var item_title = post.post.title;
-	var item_content = post.post.content;
+	var item_content = post.post.text;
 
 	new_feed_item.attr("id", item_id);
 	
@@ -82,10 +82,6 @@ function add_to_feed(post){
 	new_feed_item.find(".post_image").css("background-image", item_img);
 	new_feed_item.find(".title_name").html(item_title);
 	new_feed_item.find(".post_content").html(item_content);
-
-	new_feed_item.on("click", ()=>{
-		goto_post(community_name, post.post.id);
-	});
 
 	$("#home_body").append(new_feed_item);
 }

@@ -9,5 +9,5 @@
 
 	$id = addPost($uname, $cid, $title, $text);
 
-	return $id;
+	echo $id;
 ?>

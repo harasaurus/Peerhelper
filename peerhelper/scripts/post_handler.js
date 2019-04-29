@@ -45,12 +45,29 @@ function add_listener(){
   });
 }
 
-function back_from_post_creator(){
+function back_from_post_creator(id){
   $(".feed_selector_item_selected").off();
   $("#post_body").empty();
   $("#home_right_pane").show();
   show_community_feed();
+  update_community_feed(id);
 }
+
+function update_community_feed(id){
+  $.ajax({
+      type: "GET",
+      url: "server/getPost.php",
+      data: {
+        pid : id,
+        uname : username
+      },
+      success: (response)=>{
+        console.log(response);
+        add_post_to_feed(JSON.parse(response));
+    }
+  }); 
+}
+
 
 function add_post_creator(layout){
   $("#post_body").append(layout);
@@ -76,7 +93,6 @@ function create_post(){
               text : post_text
             },
         success: (response)=> {
-          console.log(response);
           if(response != 0){
             send_post_img(response);
           }
@@ -86,5 +102,20 @@ function create_post(){
 }
 
 function send_post_img(id){
-  
+  var formData = new FormData();
+  formData.append('post_create_img', $('#post_create_img')[0].files[0]);
+
+$.ajax({
+       url : 'server/postImageUpdate.php?pid='+id,
+       type : 'POST',
+       data : formData,
+       processData: false,
+       contentType: false,
+       success : (code)=> {
+           console.log(code);
+           if(code == 0){
+              back_from_post_creator(id);
+           }
+       }
+});
 }

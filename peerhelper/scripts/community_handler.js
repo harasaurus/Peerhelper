@@ -22,6 +22,34 @@ function goto_community_feed(id, name, from_id){
 	});
 }
 
+function add_post_to_feed(post){
+  var new_feed_item = $(feed_item_element);
+
+  var community_name = post.community.name;
+  var community_img = "data/images/community/community_" + post.community.id + ".png";
+  
+  var post_by = post.by;
+  //var post_time = post.on;
+
+  var item_id = "feedItem_" + post.post.id;
+  var item_img = "url('data/images/post/post_" + post.post.id + ".jpg')";
+  var item_title = post.post.title;
+  var item_content = post.post.text;
+
+  new_feed_item.attr("id", item_id);
+  
+  new_feed_item.find(".feed_item_community_img").attr("src", community_img);
+  new_feed_item.find(".post_community").html(community_name);
+  new_feed_item.find(".post_user").html(post_by);
+  //new_feed_item.find(".post_date").html(post_time);
+
+  new_feed_item.find(".post_image").css("background-image", item_img);
+  new_feed_item.find(".title_name").html(item_title);
+  new_feed_item.find(".post_content").html(item_content);
+
+  $("#home_body").prepend(new_feed_item);
+}
+
 function load_community_banner(name){
   $("#home_header_search").hide();
   $("#header_tag").html(name);

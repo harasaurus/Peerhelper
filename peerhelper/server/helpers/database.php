@@ -255,7 +255,7 @@ function addPost($uname, $cid, $title, $text){
 		$query = "INSERT INTO posts_info(community, user) 
 				  VALUES ('$cid', '$uid')";
 		if ($dbhandler->query($query)) {
-			$pid = $dbhandler->insert_id; 
+			$pid = $dbhandler->insert_id;
 			$dbhandler->close();
 			addPostData($pid, $title, $text);
 			return $pid;
@@ -399,8 +399,41 @@ function getUserScore($pid, $uname){
 	return 0;
 }
 
-function getComments($pid){
+function getPost($pid, $uname){
+	$dbserver = $GLOBALS['dbserver'];
+	$dbusername = $GLOBALS['dbusername'];
+	$dbpassword = $GLOBALS['dbpassword'];
+	$dbname = $GLOBALS['dbname'];
 
+	$dbhandler = new mysqli($dbserver,$dbusername,$dbpassword,$dbname);
+	if ($dbhandler) {
+		$query = "SELECT community.community_id as community_id, community.community_name as community_name, users.username as username, posts_data.post_id as post_id, posts_data.title as post_title, posts_data.text as post_text, posts_data.score as score, posts_data.comments as comments FROM community, users, posts_info, posts_data WHERE posts_info.post_id = posts_data.post_id AND posts_info.community = community.community_id AND posts_info.user = users.user_id AND posts_info.post_id = $pid ORDER BY post_id DESC";
+		$result = $dbhandler -> query($query);
+
+		if($result->num_rows != 1){
+			$dbhandler->close();
+			return 0;
+		}
+
+		$row = $result->fetch_assoc();
+			
+			$community['id'] = $row["community_id"];
+			$community['name'] = $row["community_name"];
+			$post["community"] = $community;
+			$post["by"] = $row["username"];
+			$post_data["id"] = $row["post_id"];
+			$post_data["title"] = $row["post_title"];
+			$post_data["text"] = $row["post_text"];
+			$post_data["score"] = $row["score"];
+			$post_data["comments"] = $row["comments"];
+			$post_data["user_score"] = getUserScore($post_data["id"], $uname);
+			$post["post"] = $post_data;
+
+		$dbhandler->close();
+		return $post;
+	}
+
+	return 0;
 }
 
 ?>

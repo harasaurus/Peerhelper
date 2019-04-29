@@ -45,10 +45,10 @@ function validate_post(post_title, post_img, post_text){
 		validated = false;
 	}
 
-	//if(!post_image_format_validate(post_img)){
-	//	show_post_create_error("post_create_img", "Image should be of jp(e)g format only");
-	//	validated = false;
-	//}
+	if(!post_image_format_validate(post_img)){
+		show_post_create_error("post_create_img", "Image should be of jp(e)g format only");
+		validated = false;
+	}
 
 	if(!post_text){
 		show_post_create_error("post_create_text", "Text is required");
