@@ -107,8 +107,6 @@ body{
 	padding: 10px 20px 10px 20px;
 	border-radius: 15px;
 	border: 0;
-	background-color:#012038;
-	color: #fff;
 	width: 235px;
 	
 	font-family: myfontRegular;
@@ -154,7 +152,11 @@ body{
 
 .post_user{
   display:inline-block;
-	width:82px;
+  width:82px;
+}
+
+.post_remove{
+
 }
 
 .post_date{
@@ -164,6 +166,7 @@ body{
 
 .post_details{
 	line-height: 2.5;
+	width: 350px;
 }
 
 .post_details > div{

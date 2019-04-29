@@ -119,3 +119,23 @@ $.ajax({
        }
 });
 }
+
+function remove_post(post_id, item_id){
+  $.ajax({
+        type: 'GET',
+        url: "server/removePost.php",
+        data: {
+              pid : post_id
+            },
+        success: (response)=> {
+          if(response == 0){
+            remove_post_from_feed(item_id);
+          }
+        }
+    });
+}
+
+function remove_post_from_feed(element_id){
+  var element = document.getElementById(element_id);
+  element.parentNode.removeChild(element);
+}

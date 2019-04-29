@@ -1,14 +1,14 @@
 function validate_community_name(community_name){
 	if(!community_format_validate(community_name)){
-		show_error("create_community_form", "Community name should start with an alphabet");
+		show_community_error("create_community_form", "Community name should start with an alphabet");
 		return false;
 	}
 	if(!length_validate(community_name, 0, 15)){
-		show_error("create_community_form", "Community name should not be more than 15 characters");
+		show_community_error("create_community_form", "Community name should not be more than 15 characters");
 		return false;
 	}
 	if(!only_word(community_name)){
-		show_error("create_community_form", "Community name should only contain alphabets, numbers or underscore");
+		show_community_error("create_community_form", "Community name should only contain alphabets, numbers or underscore");
 		return false;
 	}
 	return true;
@@ -16,20 +16,21 @@ function validate_community_name(community_name){
 
 function community_create_error_handler(code){
 	switch(code){
-		case "1":
-			show_error("create_community_form", "Community name should start with an alphabet");
+		case 1:
+			show_community_error("create_community_form", "Community name should start with an alphabet");
 		break;
-		case "2":
-			show_error("create_community_form", "Community name should only contain alphabets, numbers or underscore")
+		case 2:
+			show_community_error("create_community_form", "Community name should only contain alphabets, numbers or underscore")
 		break;
-		case "3":
-			show_error("create_community_form", "Username is already in use");
+		case 3:
+			console.log("here");
+			show_community_error("create_community_form", "Community name is already in use");
 		break;
-		case "4":
-			show_error("create_community_form", "Community name should not be more than 15 characters");
+		case 4:
+			show_community_error("create_community_form", "Community name should not be more than 15 characters");
 		break;
 		default:
-			console.log(code);
+			console.log("default code:",code);
 	}
 }
 
@@ -58,7 +59,7 @@ function validate_post(post_title, post_img, post_text){
 	return validated;
 }
 
-function show_error(element_id, message){
+function show_community_error(element_id, message){
 	var element = document.getElementById(element_id);
 	element.classList.add("input_invalid");
 	element.setAttribute("title", message);

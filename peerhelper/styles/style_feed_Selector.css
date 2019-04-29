@@ -3,12 +3,10 @@
   background-color: #fff;
   padding-top: 15px;
   padding-bottom: 15px;
-  
-
 } 
 
 .feed_selector_item_image{
-  
+  display: inline-block;
   width: auto;
   height: 40px;
   padding-left: 15px;
@@ -21,11 +19,16 @@
 
 
 .feed_selector_item_text {
+  display: inline-block;
 	font-size: 16px;
   font-family: 'myfontBold';
   line-height: 2.1;
   margin-left: 20px;
 
+}
+
+.feed_selector_item_text button{
+  padding: 1px 10px;
 }
 
 .feed_selector_item_selected{

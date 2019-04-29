@@ -83,5 +83,13 @@ function add_to_feed(post){
 	new_feed_item.find(".title_name").html(item_title);
 	new_feed_item.find(".post_content").html(item_content);
 
+	if(post.can_remove){
+		new_feed_item.find(".remove_post_icon").on("click", ()=>{
+			remove_post(post.post.id, item_id);
+		});
+	}else{
+		new_feed_item.find(".remove_post_icon").remove();
+	}
+
 	$("#home_body").append(new_feed_item);
 }

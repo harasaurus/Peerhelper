@@ -35,7 +35,7 @@ function get_community_name(){
   			if(response.code == "0"){
   				load_feed_selector();
   			}else{
-  				community_create_error_handler(code);
+  				community_create_error_handler(response.code);
   			}
  		}
 	});

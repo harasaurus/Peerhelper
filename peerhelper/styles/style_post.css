@@ -48,3 +48,8 @@
 .title_name{
 	font-weight: bold;
 }
+
+.remove_post_icon{
+	width: 20px;
+	cursor: not-allowed;
+}

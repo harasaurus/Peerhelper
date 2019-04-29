@@ -118,6 +118,7 @@ function createCommunity($cname, $uname){
 		if ($dbhandler->query($query)) {
 			$cid = $dbhandler->insert_id;
 			$dbhandler->close();
+			copy("../data/images/community/community_0.png", "../data/images/community/community_$cid.png");
 			return addMember($cid, $uname);
 		}
 		$dbhandler->close();
@@ -313,6 +314,14 @@ function getGlobalFeed($uname){
 			$community['name'] = $row["community_name"];
 			$post["community"] = $community;
 			$post["by"] = $row["username"];
+			
+			$post["can_remove"] = false;
+			if($post["by"] == $uname){
+				$post["can_remove"] = true;
+			}else if(isModerator($community['id'], $uname)){
+				$post["can_remove"] = true;
+			}
+
 			$post_data["id"] = $row["post_id"];
 			$post_data["title"] = $row["post_title"];
 			$post_data["text"] = $row["post_text"];
@@ -356,6 +365,14 @@ function getCommunityFeed($cid, $uname){
 			$community['name'] = $row["community_name"];
 			$post["community"] = $community;
 			$post["by"] = $row["username"];
+			
+			$post["can_remove"] = false;
+			if($post["by"] == $uname){
+				$post["can_remove"] = true;
+			}else if(isModerator($community['id'], $uname)){
+				$post["can_remove"] = true;
+			}
+
 			$post_data["id"] = $row["post_id"];
 			$post_data["title"] = $row["post_title"];
 			$post_data["text"] = $row["post_text"];
@@ -421,6 +438,14 @@ function getPost($pid, $uname){
 			$community['name'] = $row["community_name"];
 			$post["community"] = $community;
 			$post["by"] = $row["username"];
+			
+			$post["can_remove"] = false;
+			if($post["by"] == $uname){
+				$post["can_remove"] = true;
+			}else if(isModerator($community['id'], $uname)){
+				$post["can_remove"] = true;
+			}
+
 			$post_data["id"] = $row["post_id"];
 			$post_data["title"] = $row["post_title"];
 			$post_data["text"] = $row["post_text"];
@@ -434,6 +459,48 @@ function getPost($pid, $uname){
 	}
 
 	return 0;
+}
+
+function isModerator($cid, $uname){
+	$uid = getUid($uname);
+
+	$dbserver = $GLOBALS['dbserver'];
+	$dbusername = $GLOBALS['dbusername'];
+	$dbpassword = $GLOBALS['dbpassword'];
+	$dbname = $GLOBALS['dbname'];
+		
+	$dbhandler = new mysqli($dbserver, $dbusername, $dbpassword, $dbname);
+		if ($dbhandler) {
+			$query = "SELECT is_moderator FROM members WHERE community_id='$cid' AND user_id='$uid' AND is_moderator='1'";
+			$result = $dbhandler->query($query);
+			
+			if ($result->num_rows>0) {
+				$dbhandler->close();
+				return true;
+			}
+			$dbhandler->close();
+		}	
+	return false;
+}
+
+function removePost($pid){
+	$dbserver = $GLOBALS['dbserver'];
+	$dbusername = $GLOBALS['dbusername'];
+	$dbpassword = $GLOBALS['dbpassword'];
+	$dbname = $GLOBALS['dbname'];
+	$dbhandler = new mysqli($dbserver,$dbusername,$dbpassword,$dbname);
+	if ($dbhandler) {	
+		$query = "DELETE FROM posts_info WHERE post_id = '$pid'";
+		if ($dbhandler->query($query)) {
+			$dbhandler->close();
+
+			$file = "../data/images/post/post_$pid.jpg";
+			unlink($file);
+			return true;
+		}
+		$dbhandler->close();
+	}
+	return false;
 }
 
 ?>
