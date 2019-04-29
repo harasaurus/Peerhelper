@@ -41,6 +41,10 @@
   padding-top: 15px;
 }
 
+.reaction_selected > svg{
+  fill: red;
+}
+
 .reaction_comment{
    margin-left: 40px;
   padding-top: 15px;
